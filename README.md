@@ -2,13 +2,11 @@
 
 Highlighting differences between env files (e.g. `.env.example` and `.env`).
 
-## Installation
+## Setup
 
-todo: finish this
-
-```bash
-go get
-```
+1. Clone the repo
+2. Run `go get` in the repo dir
+3. Run `go run main.go <path>`
 
 ## Usage
 

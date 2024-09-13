@@ -85,10 +85,8 @@ func scanDirs(basepath string) {
 }
 
 func main() {
-	// Take a cli argument to specify the directory
 	if len(os.Args) != 2 {
-		fmt.Println("Bad usage")
-		log.Fatal("Usage: [directory]")
+		log.Fatal("Usage: go run main.go [directory]")
 	}
 
 	path := os.Args[1]
