@@ -59,6 +59,7 @@ func compareFiles(dirname string) {
 }
 
 func processIfPossible(dirname string) bool {
+	fmt.Println("Processing", dirname)
 	envExists := fileExists(dirname + "/.env")
 	envExampleExists := fileExists(dirname + "/.env.example")
 	processed := false
@@ -70,23 +71,30 @@ func processIfPossible(dirname string) bool {
 	return processed
 }
 
-func scanDirs() {
-	dirs, err := ioutil.ReadDir(".")
+func scanDirs(basepath string) {
+	dirs, err := ioutil.ReadDir(basepath)
 	if err != nil {
 		log.Fatalf("Error reading current directory: %s", err)
 	}
 
 	for _, dir := range dirs {
 		if dir.IsDir() {
-			processIfPossible(dir.Name())
+			processIfPossible(basepath + "/" + dir.Name())
 		}
 	}
 }
 
 func main() {
-	processed := processIfPossible(".")
+	// Take a cli argument to specify the directory
+	if len(os.Args) != 2 {
+		fmt.Println("Bad usage")
+		log.Fatal("Usage: [directory]")
+	}
+
+	path := os.Args[1]
+	processed := processIfPossible(path)
 
 	if !processed {
-		scanDirs()
+		scanDirs(path)
 	}
 }
