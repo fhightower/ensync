@@ -6,7 +6,7 @@ Highlighting differences between env files (e.g. `.env.example` and `.env`).
 
 1. Clone the repo
 2. Run `go get` in the repo dir
-3. Run `go run main.go <path>`
+3. Run `go run main.go <path>` (example: `go run main.go /Users/floyd/work/foo`)
 
 ## Usage
 
