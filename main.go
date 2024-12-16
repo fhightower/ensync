@@ -42,13 +42,15 @@ func readEnvFiles(dirname string) (map[string]string, map[string]string) {
 func compareKeys(envKeys map[string]string, envExampleKeys map[string]string) {
 	for key := range envKeys {
 		if _, ok := envExampleKeys[key]; !ok {
-			fmt.Println("Key", key, "is missing in .env.example")
+			fmt.Println("\tKey", key, "is missing in .env.example")
 		}
 	}
 
+	fmt.Println()
+
 	for key := range envExampleKeys {
 		if _, ok := envKeys[key]; !ok {
-			fmt.Println("Key", key, "is missing in .env")
+			fmt.Println("\tKey", key, "is missing in .env")
 		}
 	}
 }
@@ -59,7 +61,7 @@ func compareFiles(dirname string) {
 }
 
 func processIfPossible(dirname string) bool {
-	fmt.Println("Processing", dirname)
+	fmt.Println("\nProcessing", dirname)
 	envExists := fileExists(dirname + "/.env")
 	envExampleExists := fileExists(dirname + "/.env.example")
 	processed := false
