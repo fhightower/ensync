@@ -1,0 +1,5 @@
+- Write tests
+- Clean code (return missing keys instead of just printing them)
+- Make this a CLI to take a path and read files from that path
+- Allow file names ot be configurable
+- Add logging
